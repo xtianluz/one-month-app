@@ -9,7 +9,10 @@ data class DayData(
     @StringRes val goalRes: Int,
     @DrawableRes val imageRes: Int,
     @StringRes val descriptionRes: Int
-){
+)
+
+object DayList
+{
     val day = listOf(
         DayData(
             dayRes = R.string.day_name,
