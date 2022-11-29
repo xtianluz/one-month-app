@@ -3,9 +3,10 @@ package com.example.one_month_app
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,8 +42,11 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DayPost(){
     Scaffold() {
-        DayItem(dayData = day[0])
-
+        LazyColumn(){
+            items(day){
+                DayItem(dayData = it)
+            }
+        }
     }
 }
 
@@ -59,8 +63,8 @@ fun DayItem(dayData: DayData){
            horizontalAlignment = Alignment.Start,
            verticalArrangement = Arrangement.spacedBy(8.dp)
        ) {
-           Text(text = stringResource(dayData.dayRes))
-           Text(text = stringResource(dayData.goalRes))
+           Text(text = stringResource(dayData.dayRes), style = MaterialTheme.typography.h3)
+           Text(text = stringResource(dayData.goalRes), style = MaterialTheme.typography.h2)
            Image(
                painter = painterResource(dayData.imageRes),
                contentDescription = null,
@@ -72,16 +76,17 @@ fun DayItem(dayData: DayData){
            )
            Text(
                text = stringResource(dayData.descriptionRes),
-               textAlign = TextAlign.Justify
+               textAlign = TextAlign.Justify,
+               style = MaterialTheme.typography.body1
            )
        }
     }
 }
 
-@Preview(showBackground = true, showSystemUi = false)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun DefaultPreview() {
     OneMonthAppTheme {
-        DayItem(dayData = day[0])
+        DayPost()
     }
 }
