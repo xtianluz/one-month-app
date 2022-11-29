@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">one-month-app</string>
+    <string name="day_name">Day 1</string>
+    <string name="day_goal">Spend 15 minutes in the rising sun</string>
+    <string name="day_description">The best way to experience nature is under the rising sun in the morning. Try to relax, meditate, and feel the nature. Rejuvenate!</string>
+</resources>
